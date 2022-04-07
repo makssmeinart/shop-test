@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ProductType } from "../products/productsReducer";
+import { setCartLocalStorage } from "../../../m4.utils/handleCartLocalStorage";
 
 export const cartSlice = createSlice({
   name: "cart",
@@ -12,8 +13,7 @@ export const cartSlice = createSlice({
 
       if (!currentProd) {
         const newProduct = { ...action.payload, quantity: 1 };
-        localStorage.setItem("cart", JSON.stringify([...state, newProduct]));
-
+        setCartLocalStorage([...state, newProduct]);
         return [...state, newProduct];
       } else {
         let currentProduct = state.find(
@@ -22,7 +22,7 @@ export const cartSlice = createSlice({
 
         if (currentProduct) {
           currentProduct.quantity += 1;
-          localStorage.setItem("cart", JSON.stringify(state));
+          setCartLocalStorage(state);
         }
 
         return state;

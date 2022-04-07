@@ -1,30 +1,24 @@
 import React, { useEffect } from "react";
 import "./App.css";
-import { AppRootStateType, useAppDispatch } from "../../f1.main/m2.bll/store";
-import { productsActions } from "../../f1.main/m2.bll/reducer/products";
-import { useSelector } from "react-redux";
-import { ProductType } from "../../f1.main/m2.bll/reducer/products/productsReducer";
-import { Product } from "../../f1.main/m1.components";
+import { Header, PageHolder } from "../../f1.main/m1.components";
+import {
+  getCartLocalStorage,
+  setCartLocalStorage,
+} from "../../f1.main/m4.utils/handleCartLocalStorage";
 
 function App() {
-  const products = useSelector<AppRootStateType, ProductType[]>(
-    (state) => state.products
-  );
-  const dispatch = useAppDispatch();
-  const currentLs = localStorage.getItem("cart");
+  const cartLs = getCartLocalStorage();
 
   useEffect(() => {
-    dispatch(productsActions.fetchProducts());
-
-    if (currentLs == null) {
-      localStorage.setItem("cart", JSON.stringify([]));
+    if (cartLs === null) {
+      setCartLocalStorage([]);
     }
   }, []);
 
   return (
     <div className="App">
-      {products &&
-        products.map((prod) => <Product key={prod.id} product={prod} />)}
+      <Header />
+      <PageHolder />
     </div>
   );
 }
