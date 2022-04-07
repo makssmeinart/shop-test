@@ -1,8 +1,7 @@
-import { CommonInput, CurrentForm, FormWrapper } from "./styles";
-import { Button, Grid } from "@mui/material";
-import { useSelector } from "react-redux";
-import { selectCartProducts } from "../../../../f1.main/m2.bll/selectors/selectors";
-import { FormEvent, FormEventHandler } from "react";
+import {CommonInput, CurrentForm, FormWrapper} from "./styles";
+import {Button, Grid} from "@mui/material";
+import {useSelector} from "react-redux";
+import {selectCartProducts} from "../../../../f1.main/m2.bll/selectors/selectors";
 
 export const Form = () => {
   const cartProduct = useSelector(selectCartProducts);

@@ -1,4 +1,5 @@
-import { Product } from "../../f1.main/m1.components/products/Product";
+import {Product} from "../../f1.main/m1.components";
+
 
 export default {
   title: "Product",

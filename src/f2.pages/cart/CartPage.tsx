@@ -1,6 +1,5 @@
 import { Container, Grid } from "@mui/material";
-import { Products } from "./components";
-import { Form } from "./components/form/Form";
+import {Form, Products} from "./components";
 
 export const CartPage = () => {
   return (
