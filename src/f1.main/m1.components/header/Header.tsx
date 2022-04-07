@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { AppRootStateType } from "../../m2.bll/store";
 import { CartProductType } from "../../m2.bll/reducer/cart/cartReducer";
 import shoppingCartIcon from "../../../f4.assets/a1.imgaes/icons/shopping-cart.png";
+import {HeaderWrapper} from "./styles";
 
 export const Header = () => {
   const allCartProducts = useSelector<AppRootStateType, CartProductType[]>(
@@ -15,9 +16,9 @@ export const Header = () => {
   const totalCartCost = getCartItemsTotalCost(allCartProducts);
 
   return (
-    <header>
-      <Container>
-        <Grid container justifyContent={"end"} gap={5} alignItems={"center"}>
+    <HeaderWrapper>
+      <Container style={{height: "100%"}}>
+        <Grid container justifyContent={"end"} gap={5} alignItems={"center"} height={"100%"}>
           <Grid>
             <Link to={routes.products}>Products</Link>
           </Grid>
@@ -33,6 +34,6 @@ export const Header = () => {
           </Grid>
         </Grid>
       </Container>
-    </header>
+    </HeaderWrapper>
   );
 };
