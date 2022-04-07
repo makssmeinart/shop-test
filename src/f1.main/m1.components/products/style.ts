@@ -1,13 +1,14 @@
 import {Grid, styled} from "@mui/material";
 
 export const Card = styled(Grid)`
-  max-width: 230px;
-  background-color: dimgray;
-  color: white;
+  width: 230px;
+  background-color: #ffffff;
+  color: #333333;
 `
 
 export const CardTop = styled(Grid)`
-  height: 110px;
+  height: 140px;
+  background-color: #444;
 `
 
 export const CardTopImg = styled("img")``

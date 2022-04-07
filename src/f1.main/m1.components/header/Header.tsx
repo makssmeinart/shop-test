@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { AppRootStateType } from "../../m2.bll/store";
 import { CartProductType } from "../../m2.bll/reducer/cart/cartReducer";
 import shoppingCartIcon from "../../../f4.assets/a1.imgaes/icons/shopping-cart.png";
-import {HeaderWrapper} from "./styles";
+import {HeaderWrapper, ProdLink} from "./styles";
 
 export const Header = () => {
   const allCartProducts = useSelector<AppRootStateType, CartProductType[]>(
@@ -20,7 +20,7 @@ export const Header = () => {
       <Container style={{height: "100%"}}>
         <Grid container justifyContent={"end"} gap={5} alignItems={"center"} height={"100%"}>
           <Grid>
-            <Link to={routes.products}>Products</Link>
+            <ProdLink to={routes.products}>Products</ProdLink>
           </Grid>
           <Grid>
             <Grid container gap={1} alignItems={"center"}>

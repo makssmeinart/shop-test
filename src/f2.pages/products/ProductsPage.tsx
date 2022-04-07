@@ -5,6 +5,7 @@ import { Product } from "../../f1.main/m1.components";
 import { useEffect } from "react";
 import { productsActions } from "../../f1.main/m2.bll/reducer/products";
 import { ProductsHolder } from "./components";
+import {Container} from "@mui/material";
 
 export const ProductsPage = () => {
   const dispatch = useAppDispatch();
@@ -19,10 +20,17 @@ export const ProductsPage = () => {
 
   return (
     <section>
-      <ProductsHolder container gap={5} justifyContent={"center"} marginTop={10}>
-        {products &&
-          products.map((prod) => <Product key={prod.id} product={prod} />)}
-      </ProductsHolder>
+      <Container>
+        <ProductsHolder
+          container
+          gap={5}
+          justifyContent={"center"}
+          marginTop={10}
+        >
+          {products &&
+            products.map((prod) => <Product key={prod.id} product={prod} />)}
+        </ProductsHolder>
+      </Container>
     </section>
   );
 };
