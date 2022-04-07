@@ -1,4 +1,8 @@
-import { CartProductType } from "../../../../../f1.main/m2.bll/reducer/cart/cartReducer";
+import {
+  addCartItemQuantity,
+  CartProductType,
+  removeCartItemQuantity,
+} from "../../../../../f1.main/m2.bll/reducer/cart/cartReducer";
 import { ProductWrapper } from "./styles";
 import {
   Button,
@@ -7,9 +11,19 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
+import { useAppDispatch } from "../../../../../f1.main/m2.bll/store";
 
 export const Product = ({ product }: ProductPropsType) => {
   const { cost, cover, id, title, description, quantity } = product;
+  const dispatch = useAppDispatch();
+
+  const addItemQuantity = () => {
+    dispatch(addCartItemQuantity({ productId: id }));
+  };
+
+  const deleteItemQuantity = () => {
+    dispatch(removeCartItemQuantity({ productId: id }));
+  };
 
   return (
     <ProductWrapper sx={{ display: "flex", marginBottom: 3 }}>
@@ -51,9 +65,13 @@ export const Product = ({ product }: ProductPropsType) => {
           </Grid>
           <Grid item>
             <Grid container gap={2} alignItems={"center"}>
-              <Button  variant={"contained"}>-</Button>
+              <Button onClick={deleteItemQuantity} variant={"contained"}>
+                -
+              </Button>
               <Typography fontSize={"large"}>{quantity}</Typography>
-              <Button variant={"contained"}>+</Button>
+              <Button onClick={addItemQuantity} variant={"contained"}>
+                +
+              </Button>
             </Grid>
           </Grid>
         </Grid>
